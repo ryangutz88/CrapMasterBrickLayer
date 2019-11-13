@@ -19,19 +19,26 @@ public class CrapsGame
         int result;
         if (point == 0) {
             win = (total == 7 || total == 11);
-        }
-        if (point == 0) {
             loss = (total == 2 || total == 3 || total == 12);
-        } else
-            { if (point != 0) {
-            win = 
+            if (win) {
+                result = 1;
+                return result;
+            }
+                if (loss) {
+                    result = -1;
+                    return result;
+                }
+        } else {
+            win =  total == point;
+            loss = (total == 7 || total == 11);
             }
         if (win) {
             result = 1;
-            return point;
+            return result;
+        }
         if (loss) {
             result = -1;
-            return point;
+            return result;
         }
 
         return result;
