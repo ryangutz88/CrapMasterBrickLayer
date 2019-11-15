@@ -28,6 +28,8 @@ public class CrapsGame
                 return result;
             }
         } else {
+            point = point + total;
+            return point;
             win = total == point;
             loss = (total == 7 || total == 11);
             if (win) {
@@ -39,7 +41,6 @@ public class CrapsGame
                 return result;
             }
         }
-
         return result;
     }
 
