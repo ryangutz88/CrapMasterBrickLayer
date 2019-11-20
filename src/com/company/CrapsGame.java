@@ -13,36 +13,33 @@ public class CrapsGame
      *  0 if player continues rolling.
      */
     public int processRoll(int total) {
-        boolean win;
-        boolean loss;
-        int result = 0;
+        int result;
         if (point == 0) {
-            win = (total == 7 || total == 11);
-            loss = (total == 2 || total == 3 || total == 12);
-            if (win) {
-                result = result + 1;
-                return result;
+            if (total == 2 || total == 3 || total == 12) {
+                result=-1;
+            } else if (total == 7 || total == 11) {
+                result=1;
+            } else {
+                point=total;
+                result=0;
             }
-            if (loss) {
-                result = result - 1;
-                return result;
+        }
+        else{
+            if (point==total){
+                result=1;
+                point=0;
             }
-        } else {
-            point = point + total;
-            return point;
-            win = total == point;
-            loss = (total == 7 || total == 11);
-            if (win) {
-                result = result + 1;
-                return result;
+            else if(total==7){
+                result=-1;
+                point=0;
             }
-            if (loss) {
-                result = result - 1;
-                return result;
+            else{
+                result=0;
             }
         }
         return result;
     }
+
 
     /**
      *  Returns the saved point
